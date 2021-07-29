@@ -13,3 +13,11 @@ PDF : [movie_cok](/MOVIE-COK.pdf)
   <li>Django / SQlite</li>
   <li>SSL</li>
 </ul>
+<br>
+<h3>담당한 기능</h3>
+<ul>
+  <li>Frontend</li>
+  <li>UI 설계</li>
+  <li>알고리즘 설계</li>
+  <li>Crawling</li>
+</ul>
