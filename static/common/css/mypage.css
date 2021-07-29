@@ -1,0 +1,50 @@
+:root {
+    --primary-color: #6478ff;
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --primary-font: Arial, Helvetica, sans-serif;
+  }
+
+  a, a:hover { 
+    text-decoration: none !important;
+  }
+
+ .menuBox {
+    display: flex;
+    list-style: none;
+    width: 200px;
+    height: 54px;
+    background: var(--white-color);
+    color: var(--black-color);
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 14px;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  .menuBox i {
+    color: #ccc;
+  }
+
+  .menuBox a:hover {
+    color: var(--black-color);
+  }
+
+ .infoBtn {
+    width: 340px;
+    border-radius: 3px;
+  }
+
+  .mypage_menu {
+    justify-content: center;
+  }
+
+  /* changeinfo */
+
+  .changeinfo_area {
+    height: 54px;
+    border: 1px solid var(--gray-color);
+    border-radius: 3px;
+   }

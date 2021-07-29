@@ -1,0 +1,64 @@
+{% extends "common/base.html" %}
+{% block content %}
+{% load static %}
+<head>
+   <link rel="stylesheet" href="{% static 'common/css/style.css' %}">
+</head>
+    <div class="container">
+        <div class="title white_title my-5">회원가입</div>
+    </div>
+    <div class="flexBox">
+        <form method="post" class="post-form">
+            {% include "common/form_errors.html" %}
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control inputBox" name="username" id="username"
+                    value="{{ form.username.value|default_if_none:'' }}" placeholder="아이디를 입력해주세요." required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control inputBox" name="password1" id="password1"
+                    value="{{ form.password1.value|default_if_none:'' }}" placeholder="비밀번호를 입력해주세요." required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control inputBox" name="password2" id="password2"
+                    value="{{ form.password2.value|default_if_none:'' }}" placeholder="비밀번호를 한번 더 입력해주세요." required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control inputBox" name="email" id="email"
+                    value="{{ form.email.value|default_if_none:'' }}" placeholder="이메일을 입력해주세요." required>
+            </div>
+            <div class="form-group">
+                <select class="form-control inputBox" name="gender" id="gender" required>
+                    <option value="" disabled selected hidden>성별을 선택해주세요.</option>
+                    <option value="M">남성</option>
+                    <option value="W">여성</option>
+                </select>
+            </div>
+
+            <div class="border_area bg-light rounded-3 mb-3">
+            <div class="pl-3 my-3">연령대를 선택해주세요.</div>
+            <div class="point_form mb-2">
+                <div>
+                    <label><input type="radio" name="age" id="age" value="10" required><span>10대</span></label>
+                    <label><input type="radio" name="age" id="age" value="20"><span>20대</span></label>
+                    <label><input type="radio" name="age" id="age" value="30"><span>30대</span></label>
+                    <label><input type="radio" name="age" id="age" value="40"><span>40대</span></label>
+                    <label><input type="radio" name="age" id="age" value="50"><span>50대 이상</span></label>
+                </div>
+            </div>
+            </div>
+
+            {% comment %} <div class="form-group">
+                <input type="radio" name="age" id="age" value="10"><span>10대</span>
+                <input type="radio" name="age" id="age" value="20"><span>20대</span>
+                <input type="radio" name="age" id="age" value="30"><span>30대</span>
+                <input type="radio" name="age" id="age" value="40"><span>40대</span>
+                <input type="radio" name="age" id="age" value="50"><span>50대 이상</span>
+            </div> {% endcomment %}
+
+            <div>
+                <button type="submit" class="signup_area lgBtn primaryBtn white_text mb-5">가입하기</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

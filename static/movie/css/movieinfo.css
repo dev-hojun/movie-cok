@@ -1,0 +1,257 @@
+:root {
+    --primary-color: #6478ff;
+    --white-color: #ffffff;
+    --gray-color: #ccc;
+    --black-color: #000000;
+    --red-color: #ff4040;
+  }
+
+  a:hover {
+    color: var(--black-color);
+  }
+
+  ul, li {
+      list-style: none;
+  }
+
+  @media screen and (max-width: 1320px) {
+    .menu_container {
+      display: none;
+    }
+    .content {
+      width: 100%;
+    }
+  }
+
+
+.movie_content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+.movie_content div li {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.movie_content div li a {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.summary {
+  font-size: 14px;
+}
+.summary li {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+  .tabs_main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tabs {
+    display: flex;
+  }
+  /* 기존 하단 tab 메뉴 css 주석 처리 */
+  
+  /* .tabs .tab {
+    font-size: 1rem;
+    text-align: center;
+    line-height: 30px;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    color: var(--black-color);
+    position: relative;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    border-top : 1px solid var(--gray-color);
+    border-left : 1px solid var(--gray-color);
+    border-right : 1px solid var(--gray-color);
+  }
+
+  .tab {
+    font-weight: 600;
+    padding-top: 4px;
+  } */
+
+  .items {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    /* display: none;
+    position: relative; */
+  }
+
+  /* .items::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 50%;
+    height: 2px;
+    background-color: var(--black-color);
+  }
+  
+  .items:nth-child(2)::before {
+    left: 50%;
+    background-color: var(--black-color);
+  }
+
+  .items.active {
+    display: inline-block;
+  }
+
+  .items li {
+      margin: 20px 0 20px 0;
+      font-size: 18px;
+      font-weight: 600;
+  } */
+  
+  .point_area {
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+  }
+
+  .point_area i {
+    font-size: 30px;
+}
+
+  #chartdiv {
+    width: 100%;
+    height: 300px;
+}
+
+  #chartdiv_2 {
+    width: 100%;
+    height: 200px;
+}
+  .point_box {
+    display: flex;
+    justify-content: space-between;
+  }
+  .male {
+    color: #86c8fc;
+  }
+
+  .female {
+    color: #FFB2F5;
+  }
+
+  .square_1 {
+    color: #86c8fc;
+  }
+
+  .square_2 {
+    color: #f44336;
+  }
+
+  .square_3 {
+    color: #c7abf6;
+  }
+  
+  .square_4 {
+    color: #ffac35;
+  }
+
+  .square_5 {
+    color: #888ffe;
+  }
+
+  /* 댓글 */
+  .table {
+    font-size: 14px;
+  }
+
+  .add_button {
+    color: var(--black-color);
+    border: 1px solid var(--gray-color);
+    width: 120px;
+    height: 40px;
+    padding-top: 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .add_button a {
+    color: var(--black-color);
+  }
+
+  .add_button_2 {
+    background: var(--whtie-color);
+    border: 1px solid var(--gray-color);
+    width: 136px;
+    height: 40px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+   .point_form {
+    width: 100%;
+    text-align: center;
+    margin: 6px;
+   }
+
+   .point_form div i {
+    color: var(--red-color);
+   }
+
+   .point_form label {
+    margin-right: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 600;
+   }
+
+   .point_form label span:hover {
+    background-color: #ffeaea;
+    transition: 0.3s ease;
+    border-radius: 50%;
+   }
+
+   .td_content {
+     height: 120px;
+     vertical-align: middle;
+   }
+
+   .text_area {
+    font-size: 14px;
+    resize: none; /* textarea 사이즈 변경 불가 */
+    width: 100%;
+    outline: none;
+    border: 1px solid var(--gray-color);
+    border-radius: 6px;
+   }
+
+   input[type=radio]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin-right: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+}
+
+input[type=radio]:checked{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 4px solid var(--red-color);
+    transition: 0.1s ease;
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+}

@@ -1,0 +1,79 @@
+{% extends "common/base.html" %}
+{% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'common/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'common/css/mypage.css' %}">
+	
+	<script>
+        function ask_delete(){
+            if(confirm('정말 탈퇴하시겠습니까?')){
+                document.getElementById('delete_form').submit();
+            }
+        }
+    </script>
+</head>
+    <div class="container my-3">
+        <div class="row my-5">
+            <div class="col-2">
+                <button type="button" class="menuBox" onclick="location.href='{% url 'common:mypage' %}'">마이페이지<i class="fas fa-angle-right"></i></button>
+                <button type="button" class="menuBox" onclick="location.href='{% url 'common:changeinfo' %}'">개인 정보 수정<i class="fas fa-angle-right"></i></button> 
+                <button type="button" class="menuBox" onclick="">예제1<i class="fas fa-angle-right"></i></button> 
+                <form id="delete_form" action="{% url 'common:delete' %}" method="POST">
+                {% csrf_token %}
+                    <button type="button" class="menuBox" onclick="ask_delete()">회원 탈퇴<i class="fas fa-angle-right"></i></button> 
+                </form>
+            </div>
+            <div class="col-10">
+                <div class="col-10">   
+                    <div class="title mb-5">개인 정보 수정</div>
+                    <div class="flexBox">                
+                        <form method="post" class="post-form" onsubmit="return check_id();" name="check">
+                            {% csrf_token %}
+                            {% include "common/form_errors.html" %}
+                            <div class="form-group">
+                                <input type="text" class="form-control inputBox" name="username" id="username"
+                                    value="{{ form.username.value|default_if_none:'' }}" placeholder="변경할 username을 입력해주세요." required>
+                            </div>
+                            <div class="form-group flexBox">
+                                <input type="text" class="form-control inputBox" name="gender" id="gender"
+                                    value="{{ form.gender.value|default_if_none:'' }}" placeholder="기존 gender 값" required>
+                            </div>
+                            <div class="form-group flexBox">
+                                <input type="text" class="form-control inputBox" name="age" id="age"
+                                    value="{{ form.age.value|default_if_none:'' }}" placeholder="기존 age 값" required>
+                            </div>
+                            <div class="form-group flexBox">
+                                <input type="text" class="form-control inputBox" name="email" id="email"
+                                    value="{{ form.email.value|default_if_none:'' }}" placeholder="기존 email 값" required>
+                            </div>
+                            <div class="flexBox">
+                                <button type="submit" class="primaryBtn white_text infoBtn">회원 정보 수정</button>
+                            </div>
+                            <div class="flexBox">
+                                <button type="button" class="whiteBtn primary_text infoBtn" onclick="location.href='{% url 'common:changepw' %}'">비밀번호 변경</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // username, email 빈칸 검사
+    function check_id() {
+        if(!document.check.username.value){
+            window.alert("변경할 username을 입력해주세요.")
+            document.check.username.focus();
+            return false;
+        }
+
+        if(!document.check.email.value){
+            window.alert("이메일을 입력해주세요.")
+            document.check.email.focus();
+            return false;
+        }          
+    }
+    </script>
+{% endblock %}

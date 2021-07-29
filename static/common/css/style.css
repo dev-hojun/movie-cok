@@ -1,0 +1,245 @@
+:root {
+  --primary-color: #c90101;
+  --white-color: #ffffff;
+  --gray-color: #ccc;
+  --black-color: #000000;
+  --red-color: #ff4040;
+  }
+  /* footer 하단 고정 */
+
+
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: var(--black-color);
+    text-shadow: 0 0 1px #ffffff;
+  }
+
+  /* background-image */
+
+  body {
+    display: flex;
+    flex-direction: column;
+    background: url('../img/cinema.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+  }
+
+  .container {
+    flex: 1 0 auto;
+  }
+
+  /* form_errors */
+
+  .error_form {
+    width: 340px;
+    height: 70px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+  
+  /* Btn */
+  .lgBtn {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 54px;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .smBtn {
+    display: inline-block;
+    overflow: hidden;
+    width: 120px;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .title {
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+  }
+  
+  .primary_text {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 16px;
+    color: #c90101;
+    line-height: 51px;
+    text-align: center;
+  }
+  
+  .white_text {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--white-color);
+    line-height: 51px;
+    text-align: center;
+  }
+
+  .white_title {
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--white-color);
+    text-shadow: 0 0 3px #000000;
+  }
+
+  .black_text {
+    font-size: 16px;
+    color: var(--black-color);  
+  }
+
+  .primaryBtn {
+	border: 1px solid  #c90101;
+	background-color:  #c90101;
+	margin-bottom: 10px;
+	color: var(--white-color);
+  }
+
+  .whiteBtn {
+    border: 1px solid  #c90101;
+    background-color: var(--white-color);
+    margin-bottom: 10px;
+  }
+
+  .inputBox {
+    width: 100%;
+    height: 54px;
+    padding: 0 19px;
+    border: 1px solid var(--gray-color);
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  .flexBox {
+    display: flex;
+    justify-content: center;
+  }
+
+  .underline {
+    width: 100%;
+    height: 2px;
+    margin-bottom: 10px;
+    background-color: var(--gray-color);
+  }
+
+  .star {
+    color: #ffa406;
+}
+
+ /* menu button */
+.menuBox {
+  display: flex;
+  list-style: none;
+  width: 180px;
+  height: 54px;
+	border: 1px solid  #c90101;
+	background-color:  #c90101;
+	margin-bottom: 10px;
+	color: var(--white-color);
+  border-radius: 3px;
+  padding: 14px;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.menuBox i {
+  color: var(--white-color);
+}
+
+.menuBox a:hover {
+  color: var(--black-color);
+}
+
+.infoBtn {
+  width: 340px;
+  border-radius: 3px;
+}
+
+.signup_area {
+  width: 356px;
+}
+
+/* check radio button */
+
+input[type=radio]{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-right: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 100%;
+}
+
+input[type=radio]:checked{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 4px solid var(--red-color);
+  transition: 0.1s ease;
+  width: 14px;
+  height: 14px;
+  border-radius: 100%;
+}
+
+.point_form {
+  width: 100%;
+  text-align: center;
+ }
+
+ .point_form div i {
+  color: var(--red-color);
+ }
+
+ .point_form label {
+  margin-right: 10px;
+  cursor: pointer;
+  text-align: center;
+ }
+.point_form label span {
+  font-size: 14px;
+}
+
+/* singup, changeinfo hover effect 보류 */
+
+ /* .point_form label span:hover {
+  background-color: #ffeaea;
+  transition: 0.3s ease;
+  border-radius: 50%;
+ } */
+
+ .border_area {
+  border: 1px solid var(--gray-color);
+  border-radius: 3px;
+  font-size: 14px;
+ }
+
+ .radio_cursor {
+   cursor: pointer;
+ }
+
+ .main_image {
+  background-image: url(..//img/marvel.jpeg); 
+  min-height: 100%; 
+  background-position: center;
+  background-size: cover; 
+  position: relative;
+  opacity: 0;
+ }
+ 

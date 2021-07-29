@@ -1,0 +1,29 @@
+{% extends "common/base.html" %}
+{% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'common/css/style.css' %}">
+</head>
+    <div class="container">
+        <div class="title my-5">로그인</div>
+    </div>
+<div class="container flexBox">
+    <form method="post" class="post-form" action="{% url 'common:login' %}">
+        {% csrf_token %}
+        {% include "common/form_errors.html" %}
+        <div class="form-group">
+            <input type="text" class="form-control inputBox" name="username" id="username"
+                   value="{{ form.username.value|default_if_none:'' }}" placeholder="아이디를 입력해주세요." required>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control inputBox" name="password" id="password"
+                   value="{{ form.password.value|default_if_none:'' }}" placeholder="비밀번호를 입력해주세요." required>
+        </div>
+        <button type="submit" class="lgBtn primaryBtn white_text">로그인</button>
+        <button type="button" class="lgBtn primaryBtn white_text" onclick="location.href='/accounts/naver/login/?process=login'">네이버로 로그인</button>
+        <button type="button" class="lgBtn primaryBtn white_text" onclick="location.href='/accounts/google/login/?process=login'">구글로 로그인</button>
+        <button type="submit" class="lgBtn whiteBtn primary_text mb-5" onclick="location.href='{% url 'common:signup' %}'">회원가입</button>
+    </form>
+	<!-- <form action="." method="post"> {% csrf_token %} {{ form.as_table }} </form> -->
+</div>
+{% endblock %}

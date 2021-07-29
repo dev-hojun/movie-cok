@@ -1,0 +1,139 @@
+{% extends "common/base.html" %}
+{% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'common/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'recommend/css/recommend_detail.css' %}">
+    <script src={% static 'recommend/js/recommend_chart.js' %}></script>
+</head>
+    <div class="container flexBox my-3">
+        <div class="content">
+            <div class="white_title">추천 목록</div>
+            <hr></hr>
+                <ul>
+                    <li class="listBox row">
+                        <div class="order_list white_title col-lg-4">1st</div>
+                        <div class="order_list white_title col-lg-4">2nd</div>
+                        <div class="order_list white_title col-lg-4">3rd</div>
+                    
+                    <!-- for문 -->
+                    
+                    {% for movie in movielist %}
+                        <div class="col-lg-4 listBox my-3" onclick="location.href='/movie/{{movie.id}}'">
+						<input type="hidden" name="movie_id" value={{movie.id}}> 
+                            <div class="hover_area">
+                                <img name="image" src="{{movie.image}}">
+                                <div class="caption">
+                                    <a onclick="location.href='/movie/{{movie.id}}'">
+                                        <p>{{movie.summary}}</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="text_area bg-light pt-4 pr-3 rounded-3">
+                                <ul class="movie_title mb-3"><a name="title" onclick="location.href='/movie/{{movie.id}}'">{{movie.title}}</a></ul>
+                                <ul>
+                                    <li>네티즌
+                                        <b class="star">★</b>
+                                        <span>{{movie.score.score_npro}}</span> 
+                                    </li>
+                                    <li>장르
+                                    {% for genre in movie.genre %}
+                                        <a href="">{{genre}}</a>
+                                    {%endfor%}
+                                    </li>
+                                    <li>감독
+                                        <a>{{movie.directors}}</a>
+                                    </li>
+                                    <li>출연
+                                        <a>{{movie.actors}}</a>
+                                    </li>
+                                    <li>상영시간
+                                        <a>{{movie.playtime}}</a>
+                                    </li>
+                                    <li>개봉일
+                                        <a>{{movie.date}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> 
+                    {%endfor%}
+
+                        <!-- 더미 데이터 시작-->
+                        <!-- 더미 데이터 끝-->
+                          
+                    </li>
+                </ul>
+
+                <div class="d-flex justify-content-center row">
+                    <div class="col-lg-6 recommend_area my-3 ">
+                        <p class="white_title">{{ user.username }}님의 취향</p>
+                        <hr></hr>
+                        <div class="d-flex pl-3 pt-3 pb-3 bg-light rounded-3">
+                            <div style="width: 50%">
+                                <div class="d-flex">
+                                    <span class="recommend_point" style="width: 50%">선호하는 장르</span>
+                                    <span style="width: 50%">{{survey.genre}}</span>
+                                </div>
+                                <div class="d-flex">
+                                    <span class="recommend_point" style="width: 50%">선호하는 상영시간</span>
+                                    <span class="recommend_point" style="width: 50%">{{survey.playtime}}</span>
+                                </div>
+                                <div class="d-flex">
+                                    <span class="recommend_point" style="width: 50%">선호하는 연령등급</span>
+                                    <span class="recommend_point" style="width: 50%">{{survey.age}}</span>
+                                </div>
+                                <div class="d-flex">
+                                    <span class="recommend_point" style="width: 50%">네티즌 평점 중요도</span>
+                                    <span class="recommend_point" style="width: 50%">{{survey.score_npro}}/10</span>
+                                </div>
+                                <div class="d-flex">
+                                    <span class="recommend_point" style="width: 50%">전문가 평점 중요도</span>
+                                    <span class="recommend_point" style="width: 50%">{{survey.score_pro}}/10</span>
+                                </div>
+                                <div class="d-flex">
+                                    <span class="recommend_point" style="width: 50%">성별 평점 중요도</span>
+                                    <span class="recommend_point" style="width: 50%">{{survey.score_gender}}/10</span>
+                                </div>
+                                <div class="d-flex">
+                                    <span class="recommend_point" style="width: 50%">연령대 평점 중요도</span>
+                                    <span class="recommend_point" style="width: 50%">{{survey.score_age}}/10</span>
+                                </div>
+                            </div>
+
+                            <div style="width: 50%">
+                                <div class="d-flex">
+                                    <span class="recommend_point" style="width: 50%">연출 중요도</span>
+                                    <span class="recommend_point" style="width: 50%">{{survey.production}}</span>
+                                </div>
+                                <div class="d-flex">
+                                    <span class="recommend_point" style="width: 50%">연기 중요도</span>
+                                    <span class="recommend_point" style="width: 50%">{{survey.acting}}</span>
+                                </div>
+                                <div class="d-flex">
+                                    <span class="recommend_point" style="width: 50%">스토리 중요도</span>
+                                    <span class="recommend_point" style="width: 50%">{{survey.story}}</span>
+                                </div>
+                                <div class="d-flex">
+                                    <span class="recommend_point" style="width: 50%">영상미 중요도</span>
+                                    <span class="recommend_point" style="width: 50%">{{survey.visual}}</span>
+                                </div>
+                                <div class="d-flex">
+                                    <span class="recommend_point" style="width: 50%">OST 중요도</span>
+                                    <span class="recommend_point" style="width: 50%">{{survey.ost}}</span>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+					{% for recommend in recommendlist %}
+						<input type="hidden" name="{{recommend.movie.id}}" value={{recommend.total}}> 
+						<input type="hidden" name="{{recommend.movie.id}}" value={{recommend.similarity}}> 
+                    {% endfor %}
+					<div class="col-lg-6 recommend_area my-3 ">
+                        <p class="white_title">감상 포인트 유사도</p>
+                        <hr></hr>
+                        <div id="chartdiv" class="bg-light rounded-3"></div>
+                    </div>
+                </div>
+        </div>
+    </div>
+{% endblock %}

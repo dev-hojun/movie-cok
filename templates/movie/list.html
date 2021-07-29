@@ -1,0 +1,134 @@
+{% extends "common/base.html" %}
+{% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'common/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'movie/css/list.css' %}">
+  
+   <script type='text/javascript'>
+   $(document).ready(function(){
+      $(".page-link").on('click', function() {
+         $("#page").val($(this).data("page"));
+         $("#searchForm").submit();
+      });
+
+      $("#btn_search").on('click', function() {
+         $("#kw").val($(".kw").val());
+         $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+         $("#searchForm").submit();
+      });
+   });
+   </script>
+
+</head>
+    <div class="container flexBox my-3">
+        <div class="content">
+            <div class="white_title">영화 목록</div>
+            <hr></hr>
+                <ul>
+                    <li class="row listBox">
+                    {% for movie in movielist %}
+                        <div class="col-4 list_area my-3" onclick="location.href='/movie/{{movie.id}}'">
+                            <div class="hover_area">
+                                <img src="{{movie.image}}">
+                                <div class="caption">
+                                    <a onclick="location.href='/movie/{{movie.id}}'">
+                                        <p>{{movie.summary}}</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="text_area bg-light pt-4 pr-3 rounded-3">
+                                <ul class="mb-3"><a onclick="location.href='/movie/{{movie.id}}'">{{movie.title}}</a></ul>
+                                <ul>
+                                    <li>네티즌
+                                        <b class="star">★</b>
+                                        <span>{{movie.score.score_npro}}</span> <!-- 하위 a태그와 다른 양식을 위해 span 처리-->
+                                    </li>
+                                    <li>장르
+                                    {% for genre in movie.genre %}
+                                        <a href="">{{genre}}</a>
+                                    {%endfor%}
+                                    </li>
+                                    <li>감독
+                                        <a>{{movie.directors}}</a>
+                                    </li>
+                                    <li>출연
+                                        <a>{{movie.actors}}</a>
+                                    </li>
+                                    <li>상영시간
+                                        <a>{{movie.playtime}}분</a>
+                                    </li>
+                                    <li>개봉일
+                                        <a>{{movie.date}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> 
+                    {%endfor%}
+                        {% comment %} src 비워두면 레이아웃 뭉개져서 일단 넣어둠 {% endcomment %}
+                    </li>
+                </ul>
+
+
+
+
+
+
+                <div class="flexBox mt-5">
+                    <div class="pagination">
+                  {% if movielist.has_previous %}
+                  <span class="page-item">
+                     <!-- <a class="page-link" href="?page={{ movielist.previous_page_number }}">&laquo;</a> -->
+                     <a class="page-link" data-page="{{ movielist.previous_page_number }}" href="#">&laquo;</a>
+                  </span>
+                  {% else %}
+                  <span class="page-item disabled">
+                     <a class="page-link" tabindex="-1" aria-disabled="true" href="#">&laquo;</a>
+                  </span>
+                  {% endif %}
+                  {% for page_number in movielist.paginator.page_range %}
+                     {% if page_number >= movielist.number|add:-5 and page_number <= movielist.number|add:5 %}
+                        {% if page_number == movielist.number %}
+                        <span class="page-item active" aria-current="page">
+                           <!-- <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a> -->
+                           <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+                        </span>
+                        {% else %}
+                        <span class="page-item">
+                           <!-- <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a> -->
+                            <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+                        </span>
+                        {% endif %}
+                     {% endif %}
+                  {% endfor %}
+                  {% if movielist.has_next %}
+                  <span class="page-item">
+                     <!-- <a class="page-link" href="?page={{ movielist.next_page_number }}">&raquo;</a> -->
+                     <a class="page-link" data-page="{{ movielist.next_page_number }}" href="#">&raquo;</a>
+                  </span>
+                  {% else %}
+                  <span class="page-item disabled">
+                     <a class="page-link" tabindex="-1" aria-disabled="true" href="#">&raquo;</a>
+                  </span>
+                  {% endif %}
+                    </div>
+                </div>
+               <div class="flexBox">
+                  <div class="list_search_box">
+                     <form class="d-flex align-items-end" id="searchForm" method="get" action="{% url 'movie:list' %}">
+                        <div class="int-area">
+                           <input type="text" class="kw" required>
+                           <label for="id">{{ kw|default_if_none:'' }}</label>
+                           <button class="list_search_icon"></button>
+                        </div>
+                            <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+                           <input type="hidden" id="page" name="page" value="{{ page }}">
+						<div class="mr-3">
+							<button class="select_box" type="button" id="btn_search"><i class="fas fa-search"></i></button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+        </div>
+    </div>
+{% endblock %}

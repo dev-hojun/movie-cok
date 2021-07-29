@@ -1,0 +1,43 @@
+<!-- navbar -->
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'common/css/navbar.css' %}">
+	<script src="https://kit.fontawesome.com/73fbacc1c6.js" crossorigin="anonymous"></script>
+</head>
+<header>
+	<div class="container header">
+		<img class="title_font" style="width: 200px;" src="{% static 'common/img/logo.png' %}">
+		<p><span class="main_title" onclick="location.href='{% url 'common:index' %}'">Movie-Cok</span></p>
+		<div class="list_menu">
+			{% if user.is_superuser %}
+			<p><a href="{% url 'common:logout' %}">관리자님 환영합니다.</a></p>
+			{% endif %}
+			{% if user.is_authenticated %}
+			<p><a href="{% url 'common:mypage' %}">마이페이지</a></p>
+			{% else %}
+			<p><a href="{% url 'common:signup' %}">회원가입</a></p>
+			{% endif %}
+			{% if user.is_authenticated %}
+			<p><a href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a></p>
+			{% else %}
+			<p><a href="{% url 'common:login' %}">로그인</a></p>
+			{% endif %}
+			<p><a href="">고객센터</a></p>
+		</div>
+	</div>
+	<ul class="navbar">
+		<div class="container">
+			<li><a href="{% url 'common:index' %}">Home</a></li>
+			<li><a href="">About Us</a></li>
+			<li><a href="{% url 'movie:list' %}">Movie</a></li>
+			<li>
+				<div class="search_box">
+					<form action="">
+						<button class="icon"><i class="fas fa-search"></i></button>
+						<input type="search" id="search" />
+					</form>
+				</div>
+			</li>
+		</div>
+	</ul>
+</header>

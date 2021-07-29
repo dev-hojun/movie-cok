@@ -1,0 +1,91 @@
+{% extends "common/base.html" %}
+{% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'common/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'common/css/mypage.css' %}">
+	
+	<script>
+        function ask_delete(){
+            if(confirm('정말 탈퇴하시겠습니까?')){
+                document.getElementById('delete_form').submit();
+            }
+        }
+    </script>
+</head>
+    <div class="container my-3">
+        <div class="row my-5">
+            <div class="col-md-2 mypage_menu mb-5">
+                <button type="button" class="lgBtn primaryBtn white_text" onclick="location.href='{% url 'common:mypage' %}'">
+                    <span>마이페이지</span>
+                </button>
+                <button type="button" class="lgBtn primaryBtn white_text" onclick="location.href='{% url 'common:changeinfo' %}'">
+                    <span>개인 정보 수정</span>
+                </button> 
+                <form id="delete_form" action="{% url 'common:delete' %}" method="POST">
+                {% csrf_token %}
+                    <button type="button" class="lgBtn primaryBtn white_text" onclick="ask_delete()">
+                        <span>회원 탈퇴<span>
+                    </button> 
+                </form>
+            </div>
+            <div class="col-md-8">              
+                <div class="title white_title mb-5">비밀번호 변경</div>
+                <div class="flexBox">                
+                    <form method="post" class="post-form" onsubmit="return check_pw();" name="check">
+                        {% csrf_token %}
+                        {% include "common/form_errors.html" %}
+                        <div class="form-group">
+                            <input type="password" class="form-control inputBox" name="old_password" id="old_password"
+                                value="{{ form.old_password.value|default_if_none:'' }}" placeholder="기존 비밀번호를 입력해주세요." required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control inputBox" name="new_password1" id="new_password1"
+                                value="{{ form.new_password1.value|default_if_none:'' }}" placeholder="변경할 비밀번호를 입력해주세요." required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control inputBox" name="new_password2" id="new_password2"
+                                value="{{ form.new_password2.value|default_if_none:'' }}" placeholder="변경할 비밀번호를 한번 더 입력해주세요." required>
+                        </div>
+                        <div class="flexBox">
+                            <button type="submit" class="primaryBtn white_text infoBtn">비밀번호 수정</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // password 빈칸, 일치 검사
+        <!-- function check_pw() { -->
+            <!-- if(!document.check.old_password.value){ -->
+                <!-- window.alert("기존 비밀번호를 입력해주세요.") -->
+                <!-- document.check.old_password.focus(); -->
+                <!-- return false; -->
+            <!-- } -->
+
+            <!-- if(!document.check.new_password1.value){ -->
+                <!-- window.alert("변경할 비밀번호를 입력해주세요.") -->
+                <!-- document.check.new_password1.focus(); -->
+                <!-- return false; -->
+            <!-- } -->
+
+            <!-- if(!document.check.new_password2.value){ -->
+                <!-- window.alert("변경할 비밀번호를 한번 더 입력해주세요.") -->
+                <!-- document.check.new_password2.focus(); -->
+                <!-- return false; -->
+            <!-- }    -->
+
+        <!-- if(document.getElementById("new_password1").value==document.getElementById("new_password2").value) -->
+            <!-- return true; -->
+            
+        <!-- else{ -->
+            <!-- alert("비밀번호가 일치하지 않습니다."); -->
+            <!-- return false; -->
+        <!-- }         -->
+    <!-- } -->
+    </script>
+{% endblock %}

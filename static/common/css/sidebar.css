@@ -1,0 +1,109 @@
+:root {
+    --primary-color: #c90101;
+    --white-color: #ffffff;
+    --gray-color: #ccc;
+    --black-color: #000000;
+    --primary-font: Arial, Helvetica, sans-serif;
+  }
+
+/* side hamburger menubar*/
+		
+input[id="menuicon"] {
+	display: none;	
+}
+
+input[id="menuicon"] + label {
+	display: block;
+	width: 30px;
+	height: 20px;
+	position: fixed;
+	right: 0;
+	top: calc(50% - 10px);
+	transition: all .5s;
+	cursor: pointer;
+    margin-right: 12px;
+}
+
+input[id="menuicon"]:checked + label {
+	z-index: 2;
+	right: 150px;
+}
+
+input[id="menuicon"] + label span {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 5px;
+	border-radius: 30px;
+	background: #c90101;
+	transition: all .5s;
+}
+
+input[id="menuicon"] + label span:nth-child(1) {
+	top: 0;
+}
+
+input[id="menuicon"] + label span:nth-child(2) {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+input[id="menuicon"] + label span:nth-child(3) {
+	bottom: 0;
+}
+
+input[id="menuicon"]:checked + label span:nth-child(1) {
+	top: 50%;
+	transform: translateY(-50%) rotate(45deg);
+}
+
+input[id="menuicon"]:checked + label span:nth-child(2) {
+	opacity: 0;
+}
+
+input[id="menuicon"]:checked + label span:nth-child(3) {
+	bottom:50%;
+	transform:translateY(50%) rotate(-45deg);
+}
+
+div[class="sidebar"] {
+	width: 150px;
+	height: 100%;
+	background: var(--white-color);
+	position: fixed;
+    opacity: 0.8;
+	top: 0;
+	right: -150px;
+	z-index: 1;
+	transition: all .5s;
+    display: flex;
+    align-items: center;
+}
+
+div[class="sidebar"] ul li a {
+	color: #c90101;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+div[class="sidebar"] ul li div a {
+	color: #c90101;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+div[class="sidebar"] ul {
+	padding-left: 0px;
+	list-style: none;
+}
+.sidebar_li {
+    margin-bottom: 20px;
+}
+.sidebar ul li a:hover {
+	opacity: 0.7;
+	transition: 0.3s;
+}
+
+input[id="menuicon"]:checked + label + div {
+	right: 0;
+}
