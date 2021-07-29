@@ -19,5 +19,6 @@
   <li>알고리즘 설계</li>
   <li>Crawling</li>
 </ul>
-
+<br>
+<h3>발표 자료</h3>
 [movie-cok](/MOVIE-COK.pdf)
